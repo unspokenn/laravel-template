@@ -1,0 +1,15 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class $CLASS$
+{
+    use HandlesAuthorization;
+
+    public function __construct(): void
+    {
+        //
+    }
+}

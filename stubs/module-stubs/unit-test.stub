@@ -1,0 +1,15 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class $CLASS$ extends TestCase
+{
+    public function testExample(): void
+    {
+        $this->assertTrue(true);
+    }
+}

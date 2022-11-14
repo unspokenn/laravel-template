@@ -1,0 +1,60 @@
+{
+    "name": "$VENDOR$/$LOWER_NAME$-module",
+    "description": "",
+    "keywords": ["laravel", "$LOWER_NAME$", "module"],
+    "license": "MIT",
+    "type": "laravel-module",
+    "support": {
+        "issues": "https://github.com/$VENDOR$/$LOWER_NAME$-module/issues",
+        "source": "https://github.com/$VENDOR$/$LOWER_NAME$-module"
+    },
+    "authors": [
+        {
+            "name": "$AUTHOR_NAME$",
+            "email": "$AUTHOR_EMAIL$"
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.4",
+        "orchestra/testbench": "^7.0",
+        "friendsofphp/php-cs-fixer": "^3.6",
+        "laravel/framework": "^9.0",
+        "spatie/phpunit-snapshot-assertions": "^4.2",
+        "phpstan/phpstan": "^1.9"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "main-dev"
+        },
+        "laravel": {
+            "providers": [
+                "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\$PROVIDER_NAMESPACE$\\$STUDLY_NAME$ServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\": "src/",
+            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Database\\Factories\\": "database/factories/",
+            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+         "psr-4": {
+             "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Tests\\": "tests/"
+         }
+    },
+    "config": {
+         "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

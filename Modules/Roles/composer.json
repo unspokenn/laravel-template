@@ -1,17 +1,21 @@
 {
-    "name": "$VENDOR$/$LOWER_NAME$-module",
+    "name": "unspokenn/roles-module",
     "description": "",
-    "keywords": ["laravel", "$LOWER_NAME$", "module"],
+    "keywords": [
+        "laravel",
+        "roles",
+        "module"
+    ],
     "license": "MIT",
     "type": "laravel-module",
     "support": {
-        "issues": "https://github.com/$VENDOR$/$LOWER_NAME$-module/issues",
-        "source": "https://github.com/$VENDOR$/$LOWER_NAME$-module"
+        "issues": "https://github.com/unspokenn/roles-module/issues",
+        "source": "https://github.com/unspokenn/roles-module"
     },
     "authors": [
         {
-            "name": "$AUTHOR_NAME$",
-            "email": "$AUTHOR_EMAIL$",
+            "name": "Sadık Ergüven",
+            "email": "unspokenn@protonmail.com",
             "role": "Developer"
         }
     ],
@@ -33,27 +37,26 @@
         },
         "laravel": {
             "providers": [
-                "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\$PROVIDER_NAMESPACE$\\$STUDLY_NAME$ServiceProvider"
+                "Modules\\Roles\\src\\Providers\\RolesServiceProvider"
             ],
             "aliases": {
-
             }
         }
     },
     "autoload": {
         "psr-4": {
-            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\": "src/",
-            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Database\\Factories\\": "database/factories/",
-            "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Roles\\": "src/",
+            "Modules\\Roles\\Database\\Factories\\": "database/factories/",
+            "Modules\\Roles\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
-         "psr-4": {
-             "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\Tests\\": "tests/"
-         }
+        "psr-4": {
+            "Modules\\Roles\\Tests\\": "tests/"
+        }
     },
     "config": {
-         "sort-packages": true
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -11,6 +11,7 @@
 
         <!-- Scripts -->
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
+        @vite('webfonts.css')
         @inertiaHead
     </head>
     <body class="font-sans antialiased">

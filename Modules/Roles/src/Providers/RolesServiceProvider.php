@@ -1,20 +1,21 @@
 <?php
 
-namespace $NAMESPACE$;
+namespace Modules\Roles\src\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class $CLASS$ extends ServiceProvider
+class RolesServiceProvider extends ServiceProvider
 {
-    protected string $moduleName = '$MODULE$';
-    protected string $moduleNameLower = '$LOWER_NAME$';
+    protected string $moduleName = 'Roles';
+    protected string $moduleNameLower = 'roles';
 
     public function boot(): void
     {
         $this->registerTranslations();
         $this->registerConfig();
+        $this->registerPermissionConfig();
         $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->moduleName, '$MIGRATIONS_PATH$'));
+        $this->loadMigrationsFrom(module_path($this->moduleName, 'database/migrations'));
     }
 
     public function register(): void
@@ -25,10 +26,22 @@ class $CLASS$ extends ServiceProvider
     protected function registerConfig(): void
     {
         $this->publishes([
-            module_path($this->moduleName, '$PATH_CONFIG$/config.php') => config_path($this->moduleNameLower . '.php'),
+            module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            module_path($this->moduleName, '$PATH_CONFIG$/config.php'), $this->moduleNameLower
+            module_path($this->moduleName, 'config/config.php'),
+            $this->moduleNameLower
+        );
+    }
+
+    protected function registerPermissionConfig(): void
+    {
+        $this->publishes([
+            module_path($this->moduleName, 'config/permission.php') => config_path('permission.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'config/permission.php'),
+            'permission'
         );
     }
 
@@ -36,7 +49,7 @@ class $CLASS$ extends ServiceProvider
     {
         $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
 
-        $sourcePath = module_path($this->moduleName, '$PATH_VIEWS$');
+        $sourcePath = module_path($this->moduleName, 'resources/views');
 
         $this->publishes([
             $sourcePath => $viewPath
@@ -53,8 +66,8 @@ class $CLASS$ extends ServiceProvider
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
             $this->loadJsonTranslationsFrom($langPath);
         } else {
-            $this->loadTranslationsFrom(module_path($this->moduleName, '$PATH_LANG$'), $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom(module_path($this->moduleName, '$PATH_LANG$'));
+            $this->loadTranslationsFrom(module_path($this->moduleName, 'lang'), $this->moduleNameLower);
+            $this->loadJsonTranslationsFrom(module_path($this->moduleName, 'lang'));
         }
     }
 
